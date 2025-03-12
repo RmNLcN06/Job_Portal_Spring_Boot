@@ -19,11 +19,15 @@
     <div class="logo_right">
         <label for="" class="Candidate_login_btn">
             <a th:href="@{/login}">Job Candidate Login</a>
-            <a th:href="@{/register}">/Register</a>
+        </label>
+        <label for="" class="Candidate_login_btn">
+            <a th:href="@{/register}">Register</a>
         </label>
         <label for="" class="Recruiter_login_btn">
             <a th:href="@{/login}">Recruiter Login</a>
-            <a th:href="@{/register}">/Register</a>
+        </label>
+        <label for="" class="Recruiter_login_btn">
+            <a th:href="@{/register}">Register</a>
         </label>
     </div>
 </nav>
@@ -35,7 +39,7 @@
             <label for="location">Location:</label>
             <input id="location" type="text" placeholder="Enter a location" name="location" th:value="${location}">
             <button type="submit">
-                <i class="fa fa-search"></i>
+                <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </div>
     </div>
