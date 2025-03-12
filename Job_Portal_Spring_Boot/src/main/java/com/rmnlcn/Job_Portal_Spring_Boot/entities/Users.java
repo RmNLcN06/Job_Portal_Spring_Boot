@@ -7,28 +7,31 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Entity
-@Table(name="users")
+@Table(name="jp_users")
 public class Users {
 
     // fields
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "u_id")
     private int userId;
 
-    @Column(unique = true)
+    @Column(name = "u_email", unique = true)
     private String email;
 
+    @Column(name = "u_password")
     @NotEmpty
     private String password;
 
-
+    @Column(name = "u_is_active")
     private boolean isActive;
 
+    @Column(name = "u_registration_date")
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date registrationDate;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userTypeId", referencedColumnName = "userTypeId")
+    @JoinColumn(name = "u_fk_user_type_id", referencedColumnName = "u_t_id")
     private UsersType userTypeId;
 
 
