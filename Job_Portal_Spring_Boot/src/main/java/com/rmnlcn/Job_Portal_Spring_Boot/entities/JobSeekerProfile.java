@@ -2,6 +2,8 @@ package com.rmnlcn.Job_Portal_Spring_Boot.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "jp_job_seeker_profile")
 public class JobSeekerProfile {
@@ -43,11 +45,18 @@ public class JobSeekerProfile {
     @Column(nullable = true, name = "j_s_p_photo", length = 64)
     private String profilePhoto;
 
+    @OneToMany(targetEntity = Skills.class, cascade = CascadeType.ALL, mappedBy = "jobSeekerProfile")
+    private List<Skills> skills;
+
 
     // constructors
     public JobSeekerProfile() {}
 
-    public JobSeekerProfile(int userAccountIdForJobSeekerProfile, Users userId, String firstName, String lastName, String city, String state, String country, String workAuthorization, String employmentType, String resume, String profilePhoto) {
+    public JobSeekerProfile(Users userId) {
+        this.userId = userId;
+    }
+
+    public JobSeekerProfile(int userAccountIdForJobSeekerProfile, Users userId, String firstName, String lastName, String city, String state, String country, String workAuthorization, String employmentType, String resume, String profilePhoto, List<Skills> skills) {
         this.userAccountIdForJobSeekerProfile = userAccountIdForJobSeekerProfile;
         this.userId = userId;
         this.firstName = firstName;
@@ -59,6 +68,7 @@ public class JobSeekerProfile {
         this.employmentType = employmentType;
         this.resume = resume;
         this.profilePhoto = profilePhoto;
+        this.skills = skills;
     }
 
 
@@ -151,6 +161,14 @@ public class JobSeekerProfile {
         this.profilePhoto = profilePhoto;
     }
 
+    public List<Skills> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<Skills> skills) {
+        this.skills = skills;
+    }
+
 
     // toString() method
     @Override
@@ -167,6 +185,7 @@ public class JobSeekerProfile {
                 ", employmentType='" + employmentType + '\'' +
                 ", resume='" + resume + '\'' +
                 ", profilePhoto='" + profilePhoto + '\'' +
+                ", skills=" + skills +
                 '}';
     }
 }
