@@ -12,7 +12,7 @@ public class Users {
 
     // fields
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "u_id")
     private int userId;
 
