@@ -1,6 +1,5 @@
 package com.rmnlcn.Job_Portal_Spring_Boot.entities;
 
-
 import jakarta.persistence.*;
 
 @Entity
@@ -10,7 +9,7 @@ public class RecruiterProfile {
     // fields
     @Id
     @Column(name = "r_p_fk_user_id")
-    private int userAccountId;
+    private int userAccountIdForRecruiterProfile;
 
     @OneToOne
     @JoinColumn(name="r_p_fk_user_id")
@@ -42,8 +41,8 @@ public class RecruiterProfile {
     // constructors
     public RecruiterProfile() {}
 
-    public RecruiterProfile(int userAccountId, Users userId, String firstName, String lastName, String city, String state, String country, String company, String profilePhoto) {
-        this.userAccountId = userAccountId;
+    public RecruiterProfile(int userAccountIdForRecruiterProfile, Users userId, String firstName, String lastName, String city, String state, String country, String company, String profilePhoto) {
+        this.userAccountIdForRecruiterProfile = userAccountIdForRecruiterProfile;
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -56,12 +55,12 @@ public class RecruiterProfile {
 
 
     // getters/setters
-    public int getUserAccountId() {
-        return userAccountId;
+    public int getUserAccountIdForRecruiterProfile() {
+        return userAccountIdForRecruiterProfile;
     }
 
-    public void setUserAccountId(int userAccountId) {
-        this.userAccountId = userAccountId;
+    public void setUserAccountIdForRecruiterProfile(int userAccountIdForRecruiterProfile) {
+        this.userAccountIdForRecruiterProfile = userAccountIdForRecruiterProfile;
     }
 
     public Users getUserId() {
@@ -133,7 +132,7 @@ public class RecruiterProfile {
     @Override
     public String toString() {
         return "RecruiterProfile{" +
-                "userAccountId=" + userAccountId +
+                "userAccountIdForRecruiterProfile=" + userAccountIdForRecruiterProfile +
                 ", userId=" + userId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
